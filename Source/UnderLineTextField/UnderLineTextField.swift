@@ -221,7 +221,7 @@ open class UnderLineTextField: UITextField {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.animationDuration = animationDuration
         if let fontName = font?.familyName, let size = font?.pointSize {
-            label.font = UIFont(name: fontName, size: size * 0.8)
+            label.font = UIFont(name: fontName, size: size * 0.9)
         }
         addSubview(label)
         neededConstraint.append(NSLayoutConstraint(item: label,
@@ -237,7 +237,7 @@ open class UnderLineTextField: UITextField {
                                                    toItem: self,
                                                    attribute: .bottom,
                                                    multiplier: 1,
-                                                   constant: 0))
+                                                   constant: 3))
         neededConstraint.append(NSLayoutConstraint(item: label,
                                                    attribute: .trailing,
                                                    relatedBy: .equal,
@@ -438,7 +438,7 @@ extension UnderLineTextField {
             placeholderLabel.font = newValue
             adjustHeight()
             if let fontName = newValue?.familyName, let size = newValue?.pointSize {
-                errorLabel.font = UIFont(name: fontName, size: size * 0.8)
+                errorLabel.font = UIFont(name: fontName, size: size * 0.9)
             }
 
         }
@@ -561,7 +561,7 @@ extension UnderLineTextField {
     private func adjustHeight() {
         let lineHeight = textHeightForFont(font: font) + 8
         let placeholderHeight = textHeightForFont(font: placeholderFont)
-        let errorHeight = textHeightForFont(font: errorFont)
+        let errorHeight = textHeightForFont(font: errorFont) + 3
         let height =  lineHeight + placeholderHeight * 0.8 + errorHeight
         heightConstraint.constant = height
         guard isLayoutCalled else { return }
